@@ -10,12 +10,12 @@ export class AuthController {
 
         @Post('signup')
         signup(){
-            return {"msg":"Hello"}
+            return this.authService.signup()
         }
 
         @Post('signin')
         signin(){
-            return 'I am signed in'
+            return this.authService.signin()
         }
     
 }

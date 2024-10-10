@@ -7,6 +7,10 @@ import { Injectable } from "@nestjs/common";
 //can be managed by the Nest IoC container
 @Injectable({})
 export class AuthService {
-    signin(){}
-    signup(){}
+    signin(){
+        return {msg: 'I am signed in'}
+    }
+    signup(){
+        return {msg:"I have signed up"}
+    }
 }
