@@ -1,6 +1,6 @@
 import { Body, Controller, Post } from "@nestjs/common";
 import { AuthService } from "./auth.service";
-import { Request } from "express";
+import { AuthDto } from "./dto";
 
 //the auth is the prefixe route
 @Controller('auth')
@@ -10,7 +10,7 @@ export class AuthController {
         //give me an instance from that auth service, 
 
         @Post('signup')
-        signup(@Body() dto: any){
+        signup(@Body() dto: AuthDto){
             console.log(dto);
             
             return this.authService.signup()
