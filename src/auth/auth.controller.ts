@@ -1,4 +1,9 @@
-import { Body, Controller, ParseIntPipe, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  ParseIntPipe,
+  Post,
+} from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AuthDto } from './dto';
 
@@ -10,18 +15,8 @@ export class AuthController {
   //give me an instance from that auth service,
 
   @Post('signup')
-  signup(
-    @Body('email') email: string,
-    @Body('password', ParseIntPipe) password: string,
-  ) {
-    console.log({ 
-        email, 
-        typeOfEmail: typeof email,
-        password, 
-        typeOfPassword: typeof password 
-    });
-
-    return this.authService.signup();
+  signup(@Body() dto: AuthDto) {
+    return this.authService.signup(dto);
   }
 
   @Post('signin')
