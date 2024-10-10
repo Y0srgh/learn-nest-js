@@ -1,5 +1,5 @@
 services:
-  dev-db:
+    dev-db:
     image: postgres:13
     ports:
       - "5434:5432"
