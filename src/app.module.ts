@@ -1,8 +1,11 @@
 import { Module } from '@nestjs/common';
+import { AuthModule } from './auth/auth.module';
+import { UserModule } from './user/user.module';
+import { BookmarkModule } from './bookmark/bookmark.module';
 
 //this is a decorator; is a function that  adds a metadata to the current class or function that is decorating
 @Module({
-  imports: [],
+  imports: [AuthModule, UserModule, BookmarkModule],
   controllers: [],
   providers: [],
 })
