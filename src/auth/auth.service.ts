@@ -10,7 +10,7 @@ import { PrismaService } from "src/prisma/prisma.service";
 export class AuthService {
     constructor(private prisma: PrismaService){}
     signin(){
-        return {msg: 'I am signed in'}
+        return {msg: `I am signed in ${process.env.DATABASE_URL}`}
     }
     signup(){
         return {msg:"I have signed up"}

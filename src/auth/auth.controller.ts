@@ -1,5 +1,6 @@
-import { Controller, Post } from "@nestjs/common";
+import { Controller, Post, Req } from "@nestjs/common";
 import { AuthService } from "./auth.service";
+import { Request } from "express";
 
 //the auth is the prefixe route
 @Controller('auth')
@@ -9,7 +10,7 @@ export class AuthController {
         //give me an instance from that auth service, 
 
         @Post('signup')
-        signup(){
+        signup(@Req() req:Request){
             return this.authService.signup()
         }
 
