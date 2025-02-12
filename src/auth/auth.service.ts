@@ -8,6 +8,7 @@ import { PrismaService } from 'src/prisma/prisma.service';
 import { AuthDto } from './dto';
 import * as argon from 'argon2';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
+import { JwtService } from '@nestjs/jwt';
 
 //from the doc :
 //The @Injectable() decorator attaches metadata,
@@ -15,7 +16,10 @@ import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 //can be managed by the Nest IoC container
 @Injectable({})
 export class AuthService {
-  constructor(private prisma: PrismaService) {}
+  constructor(
+    private prisma: PrismaService,
+    private jwt: JwtService,
+  ) {}
 
   async signup(dto: AuthDto) {
     try {
@@ -68,8 +72,8 @@ export class AuthService {
 
     //compare passwords
     const isCorrectPassword = await argon.verify(
-        user.hash,
-        dto.password
+      user.hash,
+      dto.password,
     );
     //if password incorrect throw exception
     if (!isCorrectPassword) {
@@ -84,5 +88,3 @@ export class AuthService {
     return user;
   }
 }
-
-
