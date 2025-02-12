@@ -4,7 +4,7 @@ pipeline {
     environment {
         DOCKER_IMAGE = 'y0srgh/devops-nest:latest'
         DOCKER_CREDENTIALS_ID = "docker-hub-credentials"
-     }
+    }
 
     stages {
         stage('Checkout') {
