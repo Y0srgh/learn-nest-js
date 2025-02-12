@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    
+
     environment {
         DOCKER_IMAGE = 'y0srgh/devops-nest:latest'
         DOCKER_CREDENTIALS_ID = "docker-hub-credentials"
@@ -15,7 +15,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'docker build -t $DOCKER_IMAGE .'
+                sh 'docker buildx build -t $DOCKER_IMAGE .'
             }
         }
 
