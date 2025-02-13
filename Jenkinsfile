@@ -15,7 +15,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'docker buildx build --tag $DOCKER_IMAGE .'
+                sh 'docker build -t y0srgh/devops-nest:latest .'
             }
         }
 
