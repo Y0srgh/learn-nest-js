@@ -30,7 +30,7 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 sshagent (credentials: ['jenkins-ssh-key']) {
-                    sh 'ssh vagrant@192.168.56.11'
+                    sh 'ssh -o StrictHostKeyChecking=no vagrant@192.168.56.11'
                     // sh 'scp deployment.yaml vagrant@192.168.56.11:/home/vagrant/'
                     // sh 'ssh vagrant@192.168.56.11 "kubectl apply -f /home/vagrant/deployment.yaml"'
                 }
