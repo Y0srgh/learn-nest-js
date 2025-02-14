@@ -30,7 +30,7 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 sshagent (credentials: ['jenkins-ssh-key']) {
-                    sh 'ssh -o StrictHostKeyChecking=no vagrant@192.168.56.11 "ansible-playbook -i inventory deploy.yml"'                    
+                    sh 'ssh -o StrictHostKeyChecking=no vagrant@192.168.56.11 "ansible-playbook -i ansible/inventory ansible/deploy.yml"'                    
                 }
             }
         }
